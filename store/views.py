@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 def store(request):
     return render(request,'store.html')
@@ -13,7 +13,8 @@ def contact(request):
 def index(request):
     return render(request, 'index.html')
 def product(request):
-    return render(request, 'product.html')
+    products=Product.objects.all()
+    return render(request, 'product.html',{'products':products})
 def services(request):
     return render(request, 'service.html')
 def single(request):
